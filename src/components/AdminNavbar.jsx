@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, Image, FileText, Map, Phone, Heart, Globe, LogOut } from 'lucide-react';
+import { Menu, X, Image, FileText, Map, Phone, Heart, Globe, LogOut, Star } from 'lucide-react';
 
 const AdminNavbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -87,6 +87,13 @@ const AdminNavbar = () => {
                                 <Globe size={16} />
                                 Live Touch
                             </Link>
+                            <Link
+                                to="/client-rating"
+                                className="bg-white text-[#1A6B96] border-2 border-[#1A6B96] px-5 py-2 rounded-full font-bold shadow-sm hover:shadow-md hover:bg-[#1A6B96] hover:text-white transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 text-sm"
+                            >
+                                <Star size={16} />
+                                Client Rating
+                            </Link>
 
                             <button
                                 onClick={handleLogout}
@@ -156,6 +163,14 @@ const AdminNavbar = () => {
                         >
                             <Globe size={24} />
                             Live Touch
+                        </Link>
+                        <Link
+                            to="/client-rating"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="bg-white text-[#1A6B96] border-2 border-[#1A6B96] px-10 py-4 rounded-full font-bold text-xl flex items-center gap-2"
+                        >
+                            <Star size={24} />
+                            Client Rating
                         </Link>
 
                         <button

@@ -5,6 +5,7 @@ import BlogAdmin from './components/BlogAdmin'
 import GalleryAdmin from './components/GalleryAdmin'
 import JourneyAdmin from './components/JourneyAdmin'
 import LiveTouchAdmin from './components/LiveTouchAdmin'
+import ClientRatingAdmin from './components/ClientRatingAdmin'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import ProtectedRoute from './components/ProtectedRoute'
@@ -45,6 +46,12 @@ function App() {
             <ProtectedRoute>
               <AdminNavbar />
               <LiveTouchAdmin />
+            </ProtectedRoute>
+          } />
+          <Route path="/client-rating" element={
+            <ProtectedRoute>
+              <AdminNavbar />
+              <ClientRatingAdmin />
             </ProtectedRoute>
           } />
         </Routes>

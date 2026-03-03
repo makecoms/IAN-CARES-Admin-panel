@@ -9,6 +9,10 @@ export default {
             colors: {
                 primary: "#1A6B96",
                 secondary: "#FDB913",
+            },
+            screens: {
+                'md': '1250px',
+                'lg': '1250px',
             }
         },
     },

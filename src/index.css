@@ -24,4 +24,6 @@ body {
 @theme {
   --color-primary: #1A6B96;
   --color-secondary: #FDB913;
+  --breakpoint-md: 1250px;
+  --breakpoint-lg: 1250px;
 }
