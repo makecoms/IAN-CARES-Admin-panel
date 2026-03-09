@@ -167,80 +167,85 @@ const BlogAdmin = () => {
                                     />
                                 </div>
 
-                                <div className="space-y-2">
+                                <div className="space-y-4">
                                     <label className="block text-sm font-bold text-[#1A6B96] uppercase tracking-wider">
-                                        {editingId ? 'Update Featured Image (Optional)' : 'Featured Image'}
+                                        Media Upload
                                     </label>
 
-                                    {editingId && !formData.image && blogs.find(b => b._id === editingId)?.image && (
-                                        <div className="mb-4">
-                                            <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Current Image:</p>
-                                            <div className="w-full h-40 rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-200">
-                                                <img
-                                                    src={blogs.find(b => b._id === editingId).image.startsWith('http') ? blogs.find(b => b._id === editingId).image : `https://ian-cares-backend.vercel.app${blogs.find(b => b._id === editingId).image}`}
-                                                    alt="Current"
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
+                                    <div className="grid md:grid-cols-2 gap-6">
+                                        {/* Image Upload */}
+                                        <div className="space-y-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                            <p className="text-xs font-bold text-[#1A6B96] uppercase flex items-center gap-2">
+                                                Featured Image <span className="text-[10px] bg-[#1A6B96] text-white px-2 py-0.5 rounded-full">Required</span>
+                                            </p>
 
-                                    {formData.image && (
-                                        <div className="mb-4">
-                                            <p className="text-xs font-bold text-[#FDB913] mb-2 uppercase">New Image Selected:</p>
-                                            <div className="w-full h-40 rounded-2xl overflow-hidden bg-slate-100 border-2 border-[#FDB913]/30">
-                                                <img
-                                                    src={URL.createObjectURL(formData.image)}
-                                                    alt="Preview"
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
+                                            {editingId && !formData.image && blogs.find(b => b._id === editingId)?.image && (
+                                                <div className="h-32 rounded-xl overflow-hidden bg-slate-100 border-2 border-slate-200">
+                                                    <img
+                                                        src={blogs.find(b => b._id === editingId).image.startsWith('http') ? blogs.find(b => b._id === editingId).image : `https://ian-cares-backend.vercel.app${blogs.find(b => b._id === editingId).image}`}
+                                                        alt="Current"
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                            )}
 
-                                    <label className="flex items-center justify-center w-full h-[58px] px-6 rounded-2xl bg-slate-50 border border-dashed border-slate-300 hover:border-[#FDB913] hover:bg-slate-100 transition-all cursor-pointer group">
-                                        <div className="flex items-center gap-2 text-slate-500 group-hover:text-[#FDB913]">
-                                            <Upload size={20} />
-                                            <span className="text-sm font-medium">{formData.image ? formData.image.name : 'Click to upload image'}</span>
-                                        </div>
-                                        <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" required={!editingId} />
-                                    </label>
-                                </div>
+                                            {formData.image && (
+                                                <div className="h-32 rounded-xl overflow-hidden bg-slate-100 border-2 border-[#FDB913]/30">
+                                                    <img
+                                                        src={URL.createObjectURL(formData.image)}
+                                                        alt="Preview"
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                            )}
 
-                                <div className="space-y-2">
-                                    <label className="block text-sm font-bold text-[#1A6B96] uppercase tracking-wider">
-                                        {editingId ? 'Update Video (Optional)' : 'Blog Video (Optional)'}
-                                    </label>
-
-                                    {editingId && !formData.video && blogs.find(b => b._id === editingId)?.video && (
-                                        <div className="mb-4">
-                                            <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Current Video:</p>
-                                            <div className="w-full bg-slate-100 rounded-2xl p-4 border-2 border-slate-200">
-                                                <p className="text-xs text-[#1A6B96] font-medium truncate">
-                                                    {blogs.find(b => b._id === editingId).video}
-                                                </p>
-                                            </div>
+                                            <label className="flex items-center justify-center w-full h-[58px] px-6 rounded-2xl bg-white border border-dashed border-slate-300 hover:border-[#FDB913] hover:bg-slate-50 transition-all cursor-pointer group">
+                                                <div className="flex items-center gap-2 text-slate-500 group-hover:text-[#FDB913]">
+                                                    <Upload size={20} />
+                                                    <span className="text-sm font-medium">{formData.image ? 'Change Image' : 'Click to upload'}</span>
+                                                </div>
+                                                <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" required={!editingId} />
+                                            </label>
                                         </div>
-                                    )}
 
-                                    {formData.video && (
-                                        <div className="mb-4">
-                                            <p className="text-xs font-bold text-[#FDB913] mb-2 uppercase">New Video Selected:</p>
-                                            <div className="w-full bg-slate-100 rounded-2xl p-4 border-2 border-[#FDB913]/30">
-                                                <p className="text-xs text-[#FDB913] font-medium truncate">
-                                                    {formData.video.name}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    )}
+                                        {/* Video Upload */}
+                                        <div className="space-y-3 p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                            <p className="text-xs font-bold text-[#1A6B96] uppercase flex items-center gap-2">
+                                                Blog Video <span className="text-[10px] bg-slate-200 text-slate-500 px-2 py-0.5 rounded-full uppercase tracking-tighter">Optional</span>
+                                            </p>
 
-                                    <label className="flex items-center justify-center w-full h-[58px] px-6 rounded-2xl bg-slate-50 border border-dashed border-slate-300 hover:border-[#FDB913] hover:bg-slate-100 transition-all cursor-pointer group">
-                                        <div className="flex items-center gap-2 text-slate-500 group-hover:text-[#FDB913]">
-                                            <Upload size={20} />
-                                            <span className="text-sm font-medium">{formData.video ? formData.video.name : 'Click to upload video'}</span>
+                                            {editingId && !formData.video && blogs.find(b => b._id === editingId)?.video && (
+                                                <div className="h-32 rounded-xl bg-slate-100 border-2 border-slate-200 flex items-center justify-center p-2">
+                                                    <p className="text-[10px] text-[#1A6B96] font-medium break-all text-center">
+                                                        {blogs.find(b => b._id === editingId).video.split('/').pop()}
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {formData.video && (
+                                                <div className="h-32 rounded-xl bg-slate-100 border-2 border-[#FDB913]/30 flex items-center justify-center p-2">
+                                                    <p className="text-[10px] text-[#FDB913] font-medium break-all text-center">
+                                                        {formData.video.name}
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {!formData.video && (!editingId || (editingId && !blogs.find(b => b._id === editingId)?.video)) && (
+                                                <div className="h-32 rounded-xl bg-slate-100 border border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400 gap-1">
+                                                    <Trash2 size={24} className="opacity-20" />
+                                                    <span className="text-[10px]">No video attached</span>
+                                                </div>
+                                            )}
+
+                                            <label className="flex items-center justify-center w-full h-[58px] px-6 rounded-2xl bg-white border border-dashed border-slate-300 hover:border-[#FDB913] hover:bg-slate-50 transition-all cursor-pointer group">
+                                                <div className="flex items-center gap-2 text-slate-500 group-hover:text-[#FDB913]">
+                                                    <Upload size={20} />
+                                                    <span className="text-sm font-medium">{formData.video ? 'Change Video' : 'Add Video'}</span>
+                                                </div>
+                                                <input type="file" className="hidden" onChange={handleVideoChange} accept="video/*" />
+                                            </label>
                                         </div>
-                                        <input type="file" className="hidden" onChange={handleVideoChange} accept="video/*" />
-                                    </label>
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2">
