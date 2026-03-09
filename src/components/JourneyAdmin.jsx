@@ -254,7 +254,7 @@ const JourneyAdmin = () => {
 
                                     <div className="space-y-2">
                                         <label className="block text-sm font-bold text-[#1A6B96] uppercase tracking-wider">
-                                            Embed Link (YouTube/Vimeo)
+                                            Any Video URL (Any Platform)
                                         </label>
                                         <input
                                             type="text"
@@ -262,7 +262,7 @@ const JourneyAdmin = () => {
                                             value={formData.videoUrl}
                                             onChange={handleInputChange}
                                             disabled={!!formData.video}
-                                            placeholder={formData.video ? "File selected (Link disabled)" : "https://www.youtube.com/embed/..."}
+                                            placeholder={formData.video ? "File selected (Link disabled)" : "Add Link"}
                                             className={`w-full px-6 py-4 rounded-2xl bg-white border border-slate-100 focus:outline-none focus:ring-2 focus:ring-[#1A6B96]/20 transition-all text-slate-900 font-medium ${formData.video ? 'opacity-50 cursor-not-allowed' : ''}`}
                                         />
                                     </div>
