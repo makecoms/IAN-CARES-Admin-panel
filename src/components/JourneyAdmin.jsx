@@ -8,7 +8,8 @@ const JourneyAdmin = () => {
         name: '',
         shortDescription: '',
         content: '',
-        image: null
+        image: null,
+        video: null
     });
     const [journeys, setJourneys] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,6 +42,12 @@ const JourneyAdmin = () => {
         }
     };
 
+    const handleVideoChange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            setFormData(prev => ({ ...prev, video: e.target.files[0] }));
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -50,6 +57,9 @@ const JourneyAdmin = () => {
         data.append('content', formData.content);
         if (formData.image) {
             data.append('image', formData.image);
+        }
+        if (formData.video) {
+            data.append('video', formData.video);
         }
 
         try {
@@ -86,14 +96,15 @@ const JourneyAdmin = () => {
             name: journey.name,
             shortDescription: journey.shortDescription,
             content: journey.content,
-            image: null // Keep existing image unless changed
+            image: null, // Keep existing image unless changed
+            video: null // Keep existing video unless changed
         });
         formRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleCancel = () => {
         setEditingId(null);
-        setFormData({ name: '', shortDescription: '', content: '', image: null });
+        setFormData({ name: '', shortDescription: '', content: '', image: null, video: null });
     };
 
     const handleDelete = async (id) => {
@@ -193,6 +204,42 @@ const JourneyAdmin = () => {
                                             <span className="text-sm font-medium">{formData.image ? formData.image.name : 'Upload portrait/action photo'}</span>
                                         </div>
                                         <input type="file" className="hidden" onChange={handleImageChange} accept="image/*" required={!editingId} />
+                                    </label>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <label className="block text-sm font-bold text-[#1A6B96] uppercase tracking-wider">
+                                        {editingId ? 'Update Journey Video (Optional)' : 'Journey Video (Optional)'}
+                                    </label>
+
+                                    {editingId && !formData.video && journeys.find(j => j._id === editingId)?.video && (
+                                        <div className="mb-4">
+                                            <p className="text-xs font-bold text-slate-400 mb-2 uppercase">Current Video:</p>
+                                            <div className="w-full bg-slate-100 rounded-2xl p-4 border-2 border-slate-200">
+                                                <p className="text-xs text-[#1A6B96] font-medium truncate">
+                                                    {journeys.find(j => j._id === editingId).video}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {formData.video && (
+                                        <div className="mb-4">
+                                            <p className="text-xs font-bold text-[#FDB913] mb-2 uppercase">New Video Selected:</p>
+                                            <div className="w-full bg-slate-100 rounded-2xl p-4 border-2 border-[#FDB913]/30">
+                                                <p className="text-xs text-[#FDB913] font-medium truncate">
+                                                    {formData.video.name}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <label className="flex items-center justify-center w-full h-[58px] px-6 rounded-2xl bg-slate-50 border border-dashed border-slate-300 hover:border-[#FDB913] hover:bg-slate-100 transition-all cursor-pointer group">
+                                        <div className="flex items-center gap-2 text-slate-500 group-hover:text-[#FDB913]">
+                                            <Upload size={20} />
+                                            <span className="text-sm font-medium">{formData.video ? formData.video.name : 'Click to upload video'}</span>
+                                        </div>
+                                        <input type="file" className="hidden" onChange={handleVideoChange} accept="video/*" />
                                     </label>
                                 </div>
 

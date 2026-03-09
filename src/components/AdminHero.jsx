@@ -64,7 +64,7 @@ const AdminHero = () => {
                     >
                         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
                             <img
-                                src="/logo.png"
+                                src="https://res.cloudinary.com/dzzhtglaj/image/upload/q_auto/f_auto/v1772446233/ian_cares_foundation/logo.png"
                                 alt="Admin Mascot"
                                 className="w-full aspect-[4/5] object-contain bg-white p-12"
                             />

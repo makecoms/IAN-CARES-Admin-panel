@@ -36,7 +36,7 @@ const AdminNavbar = () => {
                 <div className="max-w-[1600px] mx-auto px-6 md:px-12 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-3">
                         <img
-                            src="/logo.png"
+                            src="https://res.cloudinary.com/dzzhtglaj/image/upload/q_auto/f_auto/v1772446233/ian_cares_foundation/logo.png"
                             alt="Ian Cares Foundation Logo"
                             className="h-12 w-auto object-contain"
                         />

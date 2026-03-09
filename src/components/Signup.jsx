@@ -47,7 +47,7 @@ const Signup = () => {
                 className="w-full max-w-md bg-white rounded-[2.5rem] p-10 shadow-2xl shadow-[#1A6B96]/20 border border-slate-100"
             >
                 <div className="text-center mb-10">
-                    <img src="/logo.png" alt="Logo" className="h-20 mx-auto mb-6" />
+                    <img src="https://res.cloudinary.com/dzzhtglaj/image/upload/q_auto/f_auto/v1772446233/ian_cares_foundation/logo.png" alt="Logo" className="h-20 mx-auto mb-6" />
                     <h1 className="text-3xl font-bold text-[#1A6B96] mb-2">Create Admin</h1>
                     <p className="text-slate-500 font-medium">Temporary setup for first admin</p>
                 </div>
